@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { v4 as uuidv4 } from 'uuid';
 import { CategoryRepository } from '../modules/cars/repositories/CategoryRepository';
 import { CreateCategoryService } from '../modules/cars/services/CreateCategoryService';
 
@@ -10,17 +9,17 @@ const categoryRepository = new CategoryRepository();
 categoriesRoutes.post('/', (request, response) => {
   const { name, description } = request.body;
 
- const createCategoryService = new CreateCategoryService(categoryRepository);
+  const createCategoryService = new CreateCategoryService(categoryRepository);
 
- createCategoryService.execute({ name, description });
+  createCategoryService.execute({ name, description });
 
-  return response.status(201).send()
+  return response.status(201).send();
 });
 
 categoriesRoutes.get('/', (request, response) => {
   const showAll = categoryRepository.list();
 
-  return response.status(200).json(showAll)
-})
+  return response.status(200).json(showAll);
+});
 
 export { categoriesRoutes };

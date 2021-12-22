@@ -1,5 +1,5 @@
-import { Category } from "../model/category";
-import { ICreateCategoryDTO } from "./ICategoriesRepository";
+import { Category } from '../model/category';
+import { ICreateCategoryDTO } from './ICategoriesRepository';
 
 class CategoryRepository {
   private categories: Category[];
@@ -12,11 +12,11 @@ class CategoryRepository {
     const category = new Category();
 
     Object.assign(category, {
-      name, 
+      name,
       description,
-      created_at: new Date(),
-    })
-  
+      created_at: new Date()
+    });
+
     this.categories.push(category);
   }
 
@@ -25,10 +25,10 @@ class CategoryRepository {
   }
 
   findCategoryByName(name: string): Category | void {
-    const category = this.categories.find(category => category.name === name);
+    const category = this.categories.find((category) => category.name === name);
 
     return category;
   }
 }
 
-export { CategoryRepository }
+export { CategoryRepository };
