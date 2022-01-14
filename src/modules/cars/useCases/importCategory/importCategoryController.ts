@@ -1,5 +1,5 @@
-import { Request, Response } from "express"
-import { ImportCategoryUseCase } from "./importCategoryUseCase";
+import { Request, Response } from 'express';
+import { ImportCategoryUseCase } from './importCategoryUseCase';
 
 class ImportCategoryController {
   constructor(private importCategoryUseCase: ImportCategoryUseCase) {}
@@ -9,8 +9,8 @@ class ImportCategoryController {
 
     this.importCategoryUseCase.execute(file);
 
-    return response.send()
+    return response.send();
   }
 }
 
-export { ImportCategoryController }
+export { ImportCategoryController };
