@@ -1,9 +1,9 @@
 version: "3.9"
 
 services:
-  rentcar_database:
+  database:
     image: postgres
-    container_name: rentcar_database
+    container_name: database_rentcar
     restart: always
     ports:
       - 5432:5432
@@ -13,15 +13,21 @@ services:
       - POSTGRES_DB=rentcar
     volumes:
       - pgdata:/data/postgres
-    network_mode: host
+
+
   app:
     build: .
     container_name: rentcar
     ports:
       - 3333:3333
+      - 9229:9229
     volumes:
       - .:/usr/app
-    network_mode: host
+    links:
+      - database
+    depends_on:
+      - database
+      
 
 volumes:
   pgdata:
