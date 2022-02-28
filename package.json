@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": "nodemon",
     "build": "rimraf ./build && tsc",
@@ -14,7 +13,8 @@
     "format": "prettier --config .prettierrc src/**/*.ts --write",
     "prettier-watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
     "test": "jest",
-    "test:dev": "jest --watchAll"
+    "test:dev": "jest --watchAll",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "husky": {
     "hooks": {
