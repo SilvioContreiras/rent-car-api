@@ -9,17 +9,8 @@ import { getRepository, Repository } from 'typeorm'
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>
 
-  private static ISTANCE: CategoriesRepository;
-
-  private constructor() {
+  constructor() {
     this.repository = getRepository(Category)
-  }
-
-  public static getInstance(): CategoriesRepository {
-    if (!CategoriesRepository.ISTANCE) {
-      CategoriesRepository.ISTANCE = new CategoriesRepository();
-    }
-    return CategoriesRepository.ISTANCE;
   }
 
   async create({ name, description }: ICreateCategoryDTO): Promise<void> {
@@ -36,8 +27,6 @@ class CategoriesRepository implements ICategoriesRepository {
 
   async findByName(name: string): Promise<Category | void> {
     const category = await this.repository.findOne({ name });
-
-    console.log(category);
 
     return category;
   }
