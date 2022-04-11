@@ -1,16 +1,19 @@
-import { inject } from 'tsyringe'
+import { inject, injectable } from 'tsyringe'
 import { ICreateUsersDTO } from '../../dtos/ICreatedUsersDTO'
 import { UsersRepository } from '../../repositories/implementations/UsersRepository'
 
-class CreateCategoryUseCase {
-  constructor(@inject('UsersRepository')
-  private userRepository: UsersRepository) {}
+@injectable()
+class CreateUserUseCase {
+  constructor(
+    @inject('UsersRepository')
+    private userRepository: UsersRepository
+  ) {}
   
-  async execute({ name, password, email, driver_licence, username }: ICreateUsersDTO): Promise<void> {
+  async execute({ name, password, email, username, driver_licence }: ICreateUsersDTO): Promise<void> {
     await this.userRepository.create({ 
-      name, password, email, driver_licence, username
+      name, password, email, username, driver_licence
     })
   }
 }
 
-export { CreateCategoryUseCase }
+export { CreateUserUseCase }
