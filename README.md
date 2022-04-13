@@ -28,9 +28,9 @@ to start the server;
 * And then run the command:
 
 ```bash
-npm run migration:run
+npm run typeorm migration:run
 # or
-yarn migration:run
+yarn typeorm migration:run
 ```
 
 to create the migrations in data base;
