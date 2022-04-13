@@ -21,9 +21,6 @@ class User {
   @Column()
   isAdmin: boolean;
 
-  @Column()
-  username: string;
-
   @CreateDateColumn()
   created_at: Date;
 
